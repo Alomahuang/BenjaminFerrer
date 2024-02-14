@@ -55,6 +55,7 @@
         <nav>
           <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -64,7 +65,6 @@
       <div id="main">
         <!-- About -->
         <article id="about">
-          <h2 class="major">About</h2>
           <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
           I am <b>Benjamin Ferrer</b>, an antique enthusiast from Lyon, France.
           My background in French literature has given me a unique perspective
@@ -90,11 +90,7 @@
           <hr />
         </article>
         <article id="about_fr">
-          <blockquote>
-            Au final, nous ne conservons que ce que nous aimons. Nous n'aimerons
-            que ce que nous comprenons. Nous ne comprendrons que ce qui nous est
-            enseigné. – Baba Dioum.
-          </blockquote>
+          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
           Je suis <b>Benjamin Ferrer</b>, un passionné d'antiquités de Lyon,
           France. Mon parcours en littérature française m'a donné une
           perspective unique sur l'art et les histoires derrière chaque pièce
@@ -104,7 +100,13 @@
           Après avoir passé des années en Asie, à m'immerger dans ses cultures
           riches, je suis revenu avec une compréhension et une appréciation plus
           profondes des antiquités du monde entier.
-          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+          <br />
+          <br />
+          <blockquote>
+            Au final, nous ne conservons que ce que nous aimons. Nous n'aimerons
+            que ce que nous comprenons. Nous ne comprendrons que ce qui nous est
+            enseigné. – Baba Dioum.
+          </blockquote>
           Je m'efforce de partager la beauté et l'histoire des antiquités,
           enseignant aux autres à aimer et à conserver ces trésors.
           <br />
@@ -115,11 +117,66 @@
           chéri à nouveau.
           <hr />
         </article>
+        <article id="services">
+          <section>
+            <h2 class="major">Bulk Acquisition</h2>
+            <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+            Live in Rhône-Alpes and ready to declutter? Send us photos of your items—lamps, dishes, toys, you name it. 
+            <br />
+            <br />
+            We evaluate, agree, and collect directly from your door. 
+            <br />
+            <br />
+            Simplify your life while earning from unwanted treasures.
+          </section>
+            <br />
+            <br />
+          <section>
+            <h2 class="major">Procurement</h2>
+            <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+            Dreaming of the perfect piece? 
+            <br />
+            <br />
+            Tell us what you're after and your budget. From rare vases to unique lamps, without any upfront cost. 
+            <br />
+            <br />
+            Enjoy first dibs on exclusive finds at fair prices.
+          </section>
+          <hr />
+        </article>
+        <article id="services_fr">
+          <section>
+            <h2 class="major">Acquisition en Gros</h2>
+            <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+            Vous vivez en Rhône-Alpes et êtes prêt à désencombrer ? Envoyez-nous des photos de vos objets—lampes, vaisselles, jouets, tout ce que vous voulez. 
+            <br />
+            <br />
+            Nous évaluons, convenons et collectons directement à votre porte. 
+            <br />
+            <br />
+            Simplifiez votre vie tout en gagnant de l'argent avec des trésors non désirés.
+          </section>
+          <br />
+          <br />
+          <section>
+            <h2 class="major">Approvisionnement</h2>
+            <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
+            Vous rêvez de la pièce parfaite ? 
+            <br />
+            <br />
+            Dites-nous ce que vous recherchez et votre budget. Des vases rares aux lampes uniques, sans aucun frais initial. 
+            <br />
+            <br />
+            Profitez des premières sélections sur des trouvailles exclusives à des prix justes.
+          </section>
+          <hr />
+        </article>
+
+        
 
         <article id="blog"></article>
         <!-- Contact -->
         <article id="contact">
-          <h2 class="major">Contact</h2>
           <h4 id="note1">
             Send the message, and I will contact you within 48 hours.
           </h4>
@@ -246,7 +303,7 @@
               reset: "Reset",
               note1: "Send the message, and I will contact you within 48 hours",
               note2:
-                "If I haven't responded promptly, you can reach me using:",
+                "If I haven't responded promptly, you can reach me through:",
             },
             fr: {
               name: "Prenom",
@@ -263,12 +320,12 @@
           alertMessages: {
             en: {
               success:
-                "Message sent successfully! I will reach out to you soon!",
+                "Thank you. I will reach out to you soon!",
               failure: "Failed to send message. Error: ",
             },
             fr: {
               success:
-                "Message envoyé avec succès ! Je vous contacterai bientôt !",
+                "Merci. Je vous contacterai bientôt !",
               failure: "Échec de l'envoi du message. Erreur : ",
             },
           },
@@ -285,6 +342,9 @@
           const aboutLink = document.querySelector(
             'nav ul li a[href*="about"]'
           );
+          const servicesLink = document.querySelector(
+            'nav ul li a[href*="services"]'
+          );
           const contactLink = document.querySelector(
             'nav ul li a[href*="contact"]'
           );
@@ -292,13 +352,17 @@
           if (currentLanguage === "en") {
             aboutLink.setAttribute("href", "#about");
             contactLink.setAttribute("href", "#contact");
+            servicesLink.setAttribute("href", "#services");
             aboutLink.textContent = "About";
             contactLink.textContent = translations.contact.en;
+            servicesLink.textContent = "Services";
           } else {
             aboutLink.setAttribute("href", "#about_fr");
             contactLink.setAttribute("href", "#contact");
+            servicesLink.setAttribute("href", "#services_fr");
             aboutLink.textContent = "À propos";
             contactLink.textContent = translations.contact.fr;
+            servicesLink.textContent = "Services";
           }
 
           // Update contact form labels and buttons

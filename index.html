@@ -13,6 +13,10 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
@@ -23,12 +27,21 @@
       <!-- Header -->
       <header id="header">
         <div class="logo">
-          <span class="icon fa-gem"></span>
+          <div class="flip-card">
+            <div class="flip-card-inner" id="flipCardInner">
+              <div class="flip-card-front">
+                <img src="/images/french.svg" alt="French SVG" style="width:100%;height:100%;">
+              </div>
+              <div class="flip-card-back">
+                <img src="/images/british.svg" alt="British SVG" style="width:100%;height:100%;">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="content">
           <div class="inner">
             <h1>Benjamin Ferrer</h1>
-            <p>Antique hunter, finding gems for collectors.</p>
+            <p id="myID">Antique hunter, finding gems for collectors.</p>
           </div>
         </div>
         <nav>
@@ -64,6 +77,7 @@
 
         <!-- About -->
         <article id="about">
+         
           <blockquote>
             In the end, we conserve only what we love. We will love only what we
             understand. We will understand only what we are taught. – Baba
@@ -77,15 +91,40 @@
           After spending years in Asia, immersing myself in its rich cultures, I
           returned with a deeper understanding and appreciation for antiques
           from around the world.
-          <br /><br />
+          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
           I strive to share the beauty and history of antiques, teaching others
           to love and conserve these treasures.
-          <br />
-          <br />
+          <br /><br />
           I invite you to explore a collection curated with passion, integrity,
           and a deep respect for the past. Here, every antique is more than an
           object; it's a piece of history, waiting to be cherished again.
         </article>
+        <article id="about_fr">
+          <blockquote>
+            Au final, nous ne conservons que ce que nous aimons. Nous n'aimerons
+            que ce que nous comprenons. Nous ne comprendrons que ce qui nous est
+            enseigné. – Baba Dioum.
+          </blockquote>
+          Je suis <b>Benjamin Ferrer</b>, un passionné d'antiquités de Lyon,
+          France. Mon parcours en littérature française m'a donné une
+          perspective unique sur l'art et les histoires derrière chaque pièce
+          que je collecte.
+          <br />
+          <br />
+          Après avoir passé des années en Asie, à m'immerger dans ses cultures
+          riches, je suis revenu avec une compréhension et une appréciation plus
+          profondes des antiquités du monde entier.
+          <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+          Je m'efforce de partager la beauté et l'histoire des antiquités,
+          enseignant aux autres à aimer et à conserver ces trésors.
+          <br />
+          <br />
+          Je vous invite à explorer une collection organisée avec passion,
+          intégrité, et un profond respect pour le passé. Ici, chaque antiquité
+          est plus qu'un objet ; c'est un morceau d'histoire, en attente d'être
+          chéri à nouveau.
+        </article>
+
         <article id="blog"></article>
         <!-- Contact -->
         <article id="contact">
@@ -118,7 +157,7 @@
       <!-- Footer -->
       <footer id="footer">
         <p class="copyright">
-          &copy; 2024 Benjamin Ferrer. Design:
+          &copy; 2024 Benjamin Ferrer. By <a href="https://alomahuang.com/about/">Aloma</a> on
           <a href="https://html5up.net">HTML5 UP</a>.
         </p>
       </footer>
@@ -144,22 +183,140 @@
         });
       })();
     </script>
-    <script type="text/javascript">
-      document
-        .getElementById("contact")
-        .getElementsByTagName("form")[0]
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const flipCardInner = document.getElementById('flipCardInner');
 
-          emailjs.sendForm("service_smacnhc", "template_7eew27q", this).then(
-            function () {
-              alert("Message sent successfully!");
+    flipCardInner.addEventListener('click', function() {
+      // Check if the card is already flipped and toggle the class accordingly
+      if (flipCardInner.style.transform === "rotateY(180deg)") {
+        flipCardInner.style.transform = "rotateY(0deg)";
+      } else {
+        flipCardInner.style.transform = "rotateY(180deg)";
+      }
+    });
+  });
+    </script>
+    
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const logo = document.querySelector(".logo");
+        let currentLanguage = "en"; // Default language
+
+        const translations = {
+          paragraph: {
+            en: "Antique hunter, finding gems for collectors.",
+            fr: "Chasseur d'antiquités, trouvant des gemmes pour les collectionneurs.",
+          },
+          contact: {
+            en: "Contact",
+            fr: "Contactez",
+          },
+          formLabels: {
+            en: {
+              name: "Name",
+              email: "Email",
+              message: "Message",
+              sendMessage: "Send Message",
+              reset: "Reset",
             },
-            function (error) {
-              alert("Failed to send message. Error: " + JSON.stringify(error));
-            }
+            fr: {
+              name: "Prenom",
+              email: "E-mail",
+              message: "Message",
+              sendMessage: "Envoyer le message",
+              reset: "Réinitialiser",
+            },
+          },
+          alertMessages: {
+            en: {
+              success:
+                "Message sent successfully! I will reach out to you soon!",
+              failure: "Failed to send message. Error: ",
+            },
+            fr: {
+              success:
+                "Message envoyé avec succès ! Je vous contacterai bientôt !",
+              failure: "Échec de l'envoi du message. Erreur : ",
+            },
+          },
+        };
+
+        const toggleLanguage = () => {
+          currentLanguage = currentLanguage === "en" ? "fr" : "en";
+
+          // Update the paragraph text
+          document.getElementById("myID").textContent =
+            translations.paragraph[currentLanguage];
+
+          // Update href attribute for the "About" and "Contact" links based on currentLanguage
+          const aboutLink = document.querySelector(
+            'nav ul li a[href*="about"]'
           );
+          const contactLink = document.querySelector(
+            'nav ul li a[href*="contact"]'
+          );
+
+          if (currentLanguage === "en") {
+            aboutLink.setAttribute("href", "#about");
+            contactLink.setAttribute("href", "#contact");
+            aboutLink.textContent = "About";
+            contactLink.textContent = translations.contact.en;
+          } else {
+            aboutLink.setAttribute("href", "#about_fr");
+            contactLink.setAttribute("href", "#contact");
+            aboutLink.textContent = "À propos";
+            contactLink.textContent = translations.contact.fr;
+          }
+
+          // Update contact form labels and buttons
+          document.querySelector('label[for="name"]').textContent =
+            translations.formLabels[currentLanguage].name;
+          document.querySelector('label[for="email"]').textContent =
+            translations.formLabels[currentLanguage].email;
+          document.querySelector('label[for="message"]').textContent =
+            translations.formLabels[currentLanguage].message;
+          document.querySelector('input[type="submit"]').value =
+            translations.formLabels[currentLanguage].sendMessage;
+          document.querySelector('input[type="reset"]').value =
+            translations.formLabels[currentLanguage].reset;
+        };
+
+        logo.addEventListener("click", function () {
+          this.classList.add("animate-bg");
+
+          // Listen for the animation end to remove the class and toggle language
+          this.addEventListener(
+            "animationend",
+            function () {
+              this.classList.remove("animate-bg");
+              toggleLanguage();
+            },
+            { once: true }
+          ); // Ensure the event listener is removed after it fires once
         });
+
+        document
+          .getElementById("contact")
+          .getElementsByTagName("form")[0]
+          .addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            emailjs.sendForm("service_smacnhc", "template_7eew27q", this).then(
+              function () {
+                alert(translations.alertMessages[currentLanguage].success);
+                location.hash = "";
+              },
+              function (error) {
+                alert(
+                  translations.alertMessages[currentLanguage].failure +
+                    JSON.stringify(error)
+                );
+              }
+            );
+          });
+      });
     </script>
 
     <script>

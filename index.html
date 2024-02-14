@@ -30,10 +30,18 @@
           <div class="flip-card">
             <div class="flip-card-inner" id="flipCardInner">
               <div class="flip-card-front">
-                <img src="/images/french.svg" alt="French SVG" style="width:100%;height:100%;">
+                <img
+                  src="/images/french.svg"
+                  alt="French SVG"
+                  style="width: 100%; height: 100%"
+                />
               </div>
               <div class="flip-card-back">
-                <img src="/images/british.svg" alt="British SVG" style="width:100%;height:100%;">
+                <img
+                  src="/images/british.svg"
+                  alt="British SVG"
+                  style="width: 100%; height: 100%"
+                />
               </div>
             </div>
           </div>
@@ -54,30 +62,8 @@
 
       <!-- Main -->
       <div id="main">
-        <!-- Work -->
-        <article id="work">
-          <h2 class="major">Work</h2>
-          <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-          <p>
-            Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu,
-            at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent
-            urna nisi, fringila lorem et vehicula lacinia quam. Integer
-            sollicitudin mauris nec lorem luctus ultrices.
-          </p>
-          <p>
-            Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-            libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
-            Pellentesque condimentum sem. In efficitur ligula tate urna.
-            Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
-            Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
-            libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat
-            tempus.
-          </p>
-        </article>
-
         <!-- About -->
         <article id="about">
-         
           <blockquote>
             In the end, we conserve only what we love. We will love only what we
             understand. We will understand only what we are taught. – Baba
@@ -129,6 +115,9 @@
         <!-- Contact -->
         <article id="contact">
           <h2 class="major">Contact</h2>
+          <h4 id="note1">
+            Send the message, and I will contact you within 48 hours.
+          </h4>
           <form method="post" action="#">
             <div class="fields">
               <div class="field half">
@@ -151,13 +140,43 @@
               <li><input type="reset" value="Reset" /></li>
             </ul>
           </form>
+          <hr />
+          <h4 id="note2">
+            If you prefer to call me directly or send detailed emails with
+            photos, you can click on the icons below.
+          </h4>
+          <ul class="icons" style="display: flex;justify-content: center;">
+            <li>
+              <a href="tel:+33601778812" class="contactMethod">
+                <img
+                  src="/images/phone.png"
+                  alt="Phone SVG"
+                  style="width: 50%; height: 50%"
+                />
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="mailto: benjamin-ferrer@hotmail.fr"
+                class="contactMethod"
+              >
+                <img
+                  src="/images/email.png"
+                  alt="Email SVG"
+                  style="width: 60%; height: 60%"
+                />
+              </a>
+            </li>
+          </ul>
         </article>
       </div>
 
       <!-- Footer -->
       <footer id="footer">
         <p class="copyright">
-          &copy; 2024 Benjamin Ferrer. By <a href="https://alomahuang.com/about/">Aloma</a> on
+          &copy; 2024 Benjamin Ferrer. By
+          <a href="https://alomahuang.com/about/">Aloma</a> on
           <a href="https://html5up.net">HTML5 UP</a>.
         </p>
       </footer>
@@ -184,20 +203,19 @@
       })();
     </script>
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const flipCardInner = document.getElementById('flipCardInner');
+      document.addEventListener("DOMContentLoaded", function () {
+        const flipCardInner = document.getElementById("flipCardInner");
 
-    flipCardInner.addEventListener('click', function() {
-      // Check if the card is already flipped and toggle the class accordingly
-      if (flipCardInner.style.transform === "rotateY(180deg)") {
-        flipCardInner.style.transform = "rotateY(0deg)";
-      } else {
-        flipCardInner.style.transform = "rotateY(180deg)";
-      }
-    });
-  });
+        flipCardInner.addEventListener("click", function () {
+          // Check if the card is already flipped and toggle the class accordingly
+          if (flipCardInner.style.transform === "rotateY(180deg)") {
+            flipCardInner.style.transform = "rotateY(0deg)";
+          } else {
+            flipCardInner.style.transform = "rotateY(180deg)";
+          }
+        });
+      });
     </script>
-    
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -220,6 +238,9 @@
               message: "Message",
               sendMessage: "Send Message",
               reset: "Reset",
+              note1: "Send the message, and I will contact you within 48 hours",
+              note2:
+                "If you prefer to call me directly or send detailed emails with photos, you can click on the icons below.",
             },
             fr: {
               name: "Prenom",
@@ -227,6 +248,10 @@
               message: "Message",
               sendMessage: "Envoyer le message",
               reset: "Réinitialiser",
+              note1:
+                "Envoyez le message, et je vous contacterai dans les 48 heures",
+              note2:
+                "Si vous préférez m'appeler directement ou envoyer des e-mails détaillés avec des photos, vous pouvez cliquer sur les icônes ci-dessous.",
             },
           },
           alertMessages: {
@@ -281,6 +306,10 @@
             translations.formLabels[currentLanguage].sendMessage;
           document.querySelector('input[type="reset"]').value =
             translations.formLabels[currentLanguage].reset;
+          document.querySelector('h4[id="note1"]').textContent =
+            translations.formLabels[currentLanguage].note1;
+          document.querySelector('h4[id="note2"]').textContent =
+            translations.formLabels[currentLanguage].note2;
         };
 
         logo.addEventListener("click", function () {

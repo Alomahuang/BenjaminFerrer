@@ -1840,3 +1840,10 @@ body.is-preload #footer {
   .flip-card-back {
 	transform: rotateY(180deg);
   }
+
+  .contactMethod {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	margin: 0.5rem;
+  }

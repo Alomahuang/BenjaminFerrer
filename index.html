@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Benjamin Ferrer</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="logo">
+          <span class="icon fa-gem"></span>
+        </div>
+        <div class="content">
+          <div class="inner">
+            <h1>Benjamin Ferrer</h1>
+            <p>Antique hunter, finding gems for collectors.</p>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <div id="main">
+        <!-- Work -->
+        <article id="work">
+          <h2 class="major">Work</h2>
+          <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+          <p>
+            Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu,
+            at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent
+            urna nisi, fringila lorem et vehicula lacinia quam. Integer
+            sollicitudin mauris nec lorem luctus ultrices.
+          </p>
+          <p>
+            Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
+            libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
+            Pellentesque condimentum sem. In efficitur ligula tate urna.
+            Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
+            Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
+            libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat
+            tempus.
+          </p>
+        </article>
+
+        <!-- About -->
+        <article id="about">
+          <blockquote>
+            In the end, we conserve only what we love. We will love only what we
+            understand. We will understand only what we are taught. – Baba
+            Dioum.
+          </blockquote>
+          I am <b>Benjamin Ferrer</b>, an antique enthusiast from Lyon, France.
+          My background in French literature has given me a unique perspective
+          on the art and stories behind each piece I collect.
+          <br />
+          <br />
+          After spending years in Asia, immersing myself in its rich cultures, I
+          returned with a deeper understanding and appreciation for antiques
+          from around the world.
+          <br /><br />
+          I strive to share the beauty and history of antiques, teaching others
+          to love and conserve these treasures.
+          <br />
+          <br />
+          I invite you to explore a collection curated with passion, integrity,
+          and a deep respect for the past. Here, every antique is more than an
+          object; it's a piece of history, waiting to be cherished again.
+        </article>
+        <article id="blog"></article>
+        <!-- Contact -->
+        <article id="contact">
+          <h2 class="major">Contact</h2>
+          <form method="post" action="#">
+            <div class="fields">
+              <div class="field half">
+                <label for="name">Name</label>
+                <input type="text" name="client_name" id="client_name" />
+              </div>
+              <div class="field half">
+                <label for="email">Email</label>
+                <input type="text" name="client_email" id="client_email" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="4"></textarea>
+              </div>
+            </div>
+            <ul class="actions">
+              <li>
+                <input type="submit" value="Send Message" class="primary" />
+              </li>
+              <li><input type="reset" value="Reset" /></li>
+            </ul>
+          </form>
+        </article>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p class="copyright">
+          &copy; 2024 Benjamin Ferrer. Design:
+          <a href="https://html5up.net">HTML5 UP</a>.
+        </p>
+      </footer>
+    </div>
+
+    <!-- BG -->
+    <div id="bg"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "L4jbqSs7xTiH3oUVB",
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      document
+        .getElementById("contact")
+        .getElementsByTagName("form")[0]
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          emailjs.sendForm("service_smacnhc", "template_7eew27q", this).then(
+            function () {
+              alert("Message sent successfully!");
+            },
+            function (error) {
+              alert("Failed to send message. Error: " + JSON.stringify(error));
+            }
+          );
+        });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Load the contents inside <article id="about"> from about.html, excluding the <article> tag itself
+        $("#blog").load(
+          "blog.html #blog > *",
+          function (response, status, xhr) {
+            if (status == "error") {
+              console.log(
+                "Error loading the about section: " +
+                  xhr.status +
+                  " " +
+                  xhr.statusText
+              );
+            } else {
+              console.log("Blog section loaded successfully.");
+            }
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

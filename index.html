@@ -120,24 +120,30 @@
         <article id="services">
           <section>
             <h2 class="major">Bulk Acquisition</h2>
-            <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-            Live in Rhône-Alpes and ready to declutter? Send us photos of your items—lamps, dishes, toys, you name it. 
+            <span class="image main"
+              ><img src="images/pic02.jpg" alt=""
+            /></span>
+            Live in Rhône-Alpes and ready to declutter? Send us photos of your
+            items—lamps, dishes, toys, you name it.
             <br />
             <br />
-            We evaluate, agree, and collect directly from your door. 
+            We evaluate, agree, and collect directly from your door.
             <br />
             <br />
             Simplify your life while earning from unwanted treasures.
           </section>
-            <br />
-            <br />
+          <br />
+          <br />
           <section>
             <h2 class="major">Procurement</h2>
-            <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-            Dreaming of the perfect piece? 
+            <span class="image main"
+              ><img src="images/pic04.jpg" alt=""
+            /></span>
+            Dreaming of the perfect piece?
             <br />
             <br />
-            Tell us what you're after and your budget. From rare vases to unique lamps, without any upfront cost. 
+            Tell us what you're after and your budget. From rare vases to unique
+            lamps, without any upfront cost.
             <br />
             <br />
             Enjoy first dibs on exclusive finds at fair prices.
@@ -147,32 +153,42 @@
         <article id="services_fr">
           <section>
             <h2 class="major">Acquisition en Gros</h2>
-            <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-            Vous vivez en Rhône-Alpes et êtes prêt à désencombrer ? Envoyez-nous des photos de vos objets—lampes, vaisselles, jouets, tout ce que vous voulez. 
+            <span class="image main"
+              ><img src="images/pic02.jpg" alt=""
+            /></span>
+            Vous vivez en Rhône-Alpes et êtes prêt à désencombrer ? Envoyez-nous
+            des photos de vos objets—lampes, vaisselles, jouets, tout ce que
+            vous voulez.
             <br />
             <br />
-            Nous évaluons, convenons et collectons directement à votre porte. 
+            Nous évaluons, convenons et collectons directement à votre porte.
             <br />
             <br />
-            Simplifiez votre vie tout en gagnant de l'argent avec des trésors non désirés.
+            Simplifiez votre vie tout en gagnant de l'argent avec des trésors
+            non désirés.
           </section>
           <br />
           <br />
           <section>
             <h2 class="major">Approvisionnement</h2>
-            <span class="image main"><img src="images/pic04.jpg" alt="" /></span>
-            Vous rêvez de la pièce parfaite ? 
+            <span class="image main"
+              ><img src="images/pic04.jpg" alt=""
+            /></span>
+            Vous rêvez de la pièce parfaite ?
             <br />
             <br />
-            Dites-nous ce que vous recherchez et votre budget. Des vases rares aux lampes uniques, sans aucun frais initial. 
+            Dites-nous ce que vous recherchez et votre budget. Des vases rares
+            aux lampes uniques, sans aucun frais initial.
             <br />
             <br />
-            Profitez des premières sélections sur des trouvailles exclusives à des prix justes.
+            Profitez des premières sélections sur des trouvailles exclusives à
+            des prix justes.
           </section>
           <hr />
         </article>
-
-        
+        <article id="feedback">
+          <h3></h3>
+        </article>
 
         <article id="blog"></article>
         <!-- Contact -->
@@ -195,20 +211,20 @@
                 <textarea name="message" id="message" rows="4"></textarea>
               </div>
             </div>
-            <ul class="actions" style="display: flex;justify-content: center;">
+            <ul class="actions" style="display: flex; justify-content: center">
               <li>
                 <input type="submit" value="Send Message" class="primary" />
               </li>
               <li><input type="reset" value="Reset" /></li>
             </ul>
           </form>
-          <div style="width: 100%;display: flex;justify-content: center;">
+          <div style="width: 100%; display: flex; justify-content: center">
             <h2>-</h2>
           </div>
           <h4 id="note2">
             If I haven't responded promptly, you can reach me through:
           </h4>
-          <ul class="icons" style="display: flex;justify-content: center;">
+          <ul class="icons" style="display: flex; justify-content: center">
             <li>
               <a href="tel:+33601778812" class="contactMethod">
                 <img
@@ -231,7 +247,8 @@
                 />
               </a>
             </li>
-          </ul><hr />
+          </ul>
+          <hr />
         </article>
       </div>
 
@@ -319,17 +336,23 @@
           },
           alertMessages: {
             en: {
-              success:
-                "Thank you. I will reach out to you soon!",
+              success: "Thank you. I will reach out to you soon!",
               failure: "Failed to send message. Error: ",
+              emptyFields: "Please fill in all fields.",
+              invalidEmail: "Please enter a valid email address.",
             },
             fr: {
-              success:
-                "Merci. Je vous contacterai bientôt !",
+              success: "Merci. Je vous contacterai bientôt !",
               failure: "Échec de l'envoi du message. Erreur : ",
+              emptyFields: "Veuillez remplir tous les champs.",
+              invalidEmail: "Veuillez saisir une adresse e-mail valide.",
             },
           },
         };
+
+        function isValidEmail(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
 
         const toggleLanguage = () => {
           currentLanguage = currentLanguage === "en" ? "fr" : "en";
@@ -396,19 +419,75 @@
           ); // Ensure the event listener is removed after it fires once
         });
 
+        const updateFeedbackMessage = (message) => {
+          const feedbackArticle = document.getElementById("feedback");
+          const h3 = feedbackArticle.getElementsByTagName("h3")[0];
+          h3.textContent = message; // Set the text of h3
+          location.hash = "#feedback"; // Navigate to the feedback section
+        };
+
+        function displayWarning(message) {
+          let warningElement = document.querySelector(".form-warning");
+          if (!warningElement) {
+            warningElement = document.createElement("h3");
+            warningElement.className = "form-warning";
+            const form = document
+              .getElementById("contact")
+              .getElementsByTagName("form")[0];
+            form.insertBefore(warningElement, form.querySelector(".actions"));
+          }
+          warningElement.textContent = message;
+          warningElement.style.color = "red";
+
+          // Remove the warning after 5 seconds
+          setTimeout(() => {
+            warningElement.remove();
+          }, 3000);
+        }
+
+        const clearMessage = () => {
+          document.getElementById("client_name").value = "";
+          document.getElementById("client_email").value = "";
+          document.getElementById("message").value = "";
+        };
+
         document
           .getElementById("contact")
           .getElementsByTagName("form")[0]
           .addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent the default form submission
+            // Validation checks
+            const name = document.getElementById("client_name").value.trim();
+            const email = document.getElementById("client_email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+              displayWarning(
+                translations.alertMessages[currentLanguage].emptyFields
+              );
+              submitButton.disabled = false; // Re-enable the submit button if validation fails
+              return;
+            }
+
+            if (!isValidEmail(email)) {
+              displayWarning(
+                translations.alertMessages[currentLanguage].invalidEmail
+              );
+              submitButton.disabled = false; // Re-enable the submit button if validation fails
+              return;
+            }
 
             emailjs.sendForm("service_smacnhc", "template_7eew27q", this).then(
               function () {
-                alert(translations.alertMessages[currentLanguage].success);
-                location.hash = "";
+                clearMessage();
+                updateFeedbackMessage(
+                  translations.alertMessages[currentLanguage].success
+                );
               },
               function (error) {
-                alert(
+                submitButton.disabled = false;
+                clearMessage();
+                updateFeedbackMessage(
                   translations.alertMessages[currentLanguage].failure +
                     JSON.stringify(error)
                 );
